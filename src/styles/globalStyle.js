@@ -6,10 +6,11 @@ const GlobalStyle = createGlobalStyle`
         padding: 0px;
         box-sizing: border-box;
         outline: none;
+        font-family: "Roboto", sans-serif;
     }
 
     body {
-        background: ${(props) => (props.themeWhite ? "#f9f9f9" : "#333")}
+        background: #f1f1f1;
     }
 `;
 
