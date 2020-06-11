@@ -9,7 +9,7 @@ Calculator <br/>
 </h3>
 
 <div>
-<img src="./assets/calc.gif" alt="demo-web" height="425"/>
+<img src="./assets/calc.png" alt="demo-web" height="425"/>
 </div>
 
 ## Features
