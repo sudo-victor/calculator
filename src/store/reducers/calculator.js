@@ -34,14 +34,14 @@ function calculate(operator, value1, value2) {
 }
 
 function validateDisplay(value) {
+    value = String(value);
     if (value.length > 8) {
-        alert("ultrapassou");
         const arrayValue = value.split("");
         const filteredValue = arrayValue.filter((value, index) => index < 8);
         const newValue = filteredValue.join("");
         return String(newValue);
     }
-    return String(value);
+    return value;
 }
 
 function changeSign(value) {
@@ -66,7 +66,7 @@ export default function calculator(state = INITIAL_STATE, action) {
                 }
 
                 if (state.display === "") {
-                    newState.display = state.currentValue;
+                    newState.display = validateDisplay(state.currentValue);
                 } else {
                     const { display, currentValue, operator } = newState;
                     const response = calculate(operator, currentValue, display);
@@ -102,10 +102,10 @@ export default function calculator(state = INITIAL_STATE, action) {
         case "DATA_STORAGE":
             if (state.on) {
                 newState = { ...state };
-                newState.currentValue = state.display;
+                newState.currentValue = validateDisplay(state.display);
                 newState.operator = action.payload;
                 if (newState.operator === "=") {
-                    newState.currentValue = state.display;
+                    newState.currentValue = validateDisplay(state.display);
                 }
                 if (newState.display === "") {
                     newState.operator = "";
