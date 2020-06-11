@@ -9,6 +9,10 @@ Calculator <br/>
 </h3>
 
 
+<p align="center">
+<img src="./assets/calc.gif" alt="demo-web" height="425">
+</p>
+
 ## Features
 
 -   ⚛ReactJS - A lib to create user interfaces on web pages.
