@@ -15,3 +15,8 @@ export const Author = styled.h3`
     font-weight: 300;
     color: #333;
 `;
+
+export const Link = styled.a`
+    text-decoration: none;
+    color: #333;
+`;
