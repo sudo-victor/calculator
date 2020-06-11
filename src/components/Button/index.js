@@ -11,6 +11,12 @@ export default function Button({ value, type }) {
         number: handlerAddNumber,
         action: handleActions,
     };
+    const actions = {
+        AC: handleClearAll,
+        C: handlerClear,
+        "On/Off": handlerPower,
+        "+/-": () => {},
+    };
 
     function handlerOperation() {
         const { operator, display, currentValue } = calculator;
@@ -31,16 +37,6 @@ export default function Button({ value, type }) {
         dispatch({ type: "ADD_NUMBER", payload: value });
     }
 
-    function handleActions() {
-        if (value === "AC") {
-            handleClearAll();
-        } else if (value === "C") {
-            handlerClear();
-        } else if (value === "On/Off") {
-            handlerPower();
-        }
-    }
-
     function handlerPower() {
         dispatch({ type: "ON_OFF", payload: {} });
     }
@@ -51,6 +47,10 @@ export default function Button({ value, type }) {
 
     function handlerClear() {
         dispatch({ type: "CLEAR", payload: {} });
+    }
+
+    function handleActions() {
+        actions[value]();
     }
 
     function handleClick() {

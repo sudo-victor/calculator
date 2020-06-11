@@ -5,13 +5,13 @@ const INITIAL_STATE = {
     calculated: false,
     on: false,
 };
-let newState;
 const operations = {
     "+": addition,
     "-": subtration,
     "*": multiplication,
     "/": division,
 };
+let newState;
 
 function addition(value1, value2) {
     return value1 + value2;
