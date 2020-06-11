@@ -5,7 +5,7 @@
 
 <h3 align="center">
 Calculator <br/>
-<h4>🔢 ReactJS Calculator</h4>
+<h4 align="center">🔢 ReactJS Calculator</h4>
 </h3>
 
 ## Features
