@@ -14,6 +14,7 @@ export default function Button({ value, type }) {
     function handlerOperation() {
         if (value === "=") {
             dispatch({ type: "CALCULATE", payload: {} });
+            return;
         }
         dispatch({ type: "DATA_STORAGE", payload: value });
     }

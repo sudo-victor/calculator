@@ -4,42 +4,71 @@ const INITIAL_STATE = {
     operator: "",
 };
 let newState;
+const operations = {
+    "+": addition,
+    "-": subtration,
+    "*": multiplication,
+    "/": division,
+};
+
+function addition(value1, value2) {
+    return value1 + value2;
+}
+
+function subtration(value1, value2) {
+    return value1 - value2;
+}
+
+function multiplication(value1, value2) {
+    return value1 * value2;
+}
+
+function division(value1, value2) {
+    return value1 / value2;
+}
+
+function calculate(operator, value1, value2) {
+    return operations[operator](Number(value1), Number(value2));
+}
+
+function validateDisplay(value) {
+    if (value.length > 8) {
+        alert("ultrapassou");
+        const arrayValue = value.split("");
+        const filteredValue = arrayValue.filter((value, index) => index < 8);
+        const newValue = filteredValue.join("");
+        console.log(newValue);
+        return newValue;
+    }
+    return value;
+}
 
 export default function calculator(state = INITIAL_STATE, action) {
     switch (action.type) {
         case "CALCULATE":
             newState = { ...state };
+
+            // If there is no have operator return newState
+            if (state.operator === "") {
+                return newState;
+            }
+
             if (state.display === "") {
                 newState.display = state.currentValue;
             } else {
                 const { display, currentValue, operator } = newState;
-                if (operator === "+") {
-                    const addition = String(
-                        Number(currentValue) + Number(display)
-                    );
-                    newState.display = addition;
-                } else if (operator === "-") {
-                    const subtration = String(
-                        Number(currentValue) - Number(display)
-                    );
-                    newState.display = subtration;
-                } else if (operator === "*") {
-                    const multiplication = String(
-                        Number(currentValue) * Number(display)
-                    );
-                    newState.display = multiplication;
-                } else if (operator === "/") {
-                    const divison = String(
-                        Number(currentValue) / Number(display)
-                    );
-                    newState.display = divison;
-                }
+                const response = String(
+                    calculate(operator, currentValue, display)
+                );
+                newState.display = validateDisplay(response);
             }
             return newState;
 
         case "ADD_NUMBER":
             newState = { ...state };
-            newState.display += action.payload;
+            newState.display = validateDisplay(
+                newState.display + action.payload
+            );
             return newState;
 
         case "DATA_STORAGE":
