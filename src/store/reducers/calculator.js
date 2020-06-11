@@ -44,6 +44,11 @@ function validateDisplay(value) {
     return String(value);
 }
 
+function changeSign(value) {
+    const newValue = Number(value) * -1;
+    return newValue;
+}
+
 export default function calculator(state = INITIAL_STATE, action) {
     switch (action.type) {
         case "CALCULATE":
@@ -75,7 +80,8 @@ export default function calculator(state = INITIAL_STATE, action) {
                 }
                 return newState;
             }
-            return state;
+
+            return { ...state };
 
         case "ADD_NUMBER":
             if (state.on) {
@@ -90,7 +96,8 @@ export default function calculator(state = INITIAL_STATE, action) {
                 );
                 return newState;
             }
-            return state;
+
+            return { ...state };
 
         case "DATA_STORAGE":
             if (state.on) {
@@ -106,7 +113,8 @@ export default function calculator(state = INITIAL_STATE, action) {
                 newState.display = "";
                 return newState;
             }
-            return state;
+
+            return { ...state };
 
         case "CLEAR_ALL":
             if (state.on) {
@@ -118,7 +126,7 @@ export default function calculator(state = INITIAL_STATE, action) {
                 return newState;
             }
 
-            return state;
+            return { ...state };
 
         case "CLEAR":
             if (state.on) {
@@ -129,7 +137,15 @@ export default function calculator(state = INITIAL_STATE, action) {
                 return newState;
             }
 
-            return state;
+            return { ...state };
+
+        case "CHANGE_SIGN":
+            if (state.on) {
+                newState = { ...state };
+                newState.display = changeSign(newState.display);
+                return newState;
+            }
+            return { ...state };
 
         case "ON_OFF":
             newState = { ...state };
@@ -138,6 +154,6 @@ export default function calculator(state = INITIAL_STATE, action) {
             return newState;
 
         default:
-            return state;
+            return { ...state };
     }
 }

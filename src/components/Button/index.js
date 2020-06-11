@@ -15,7 +15,7 @@ export default function Button({ value, type }) {
         AC: handleClearAll,
         C: handlerClear,
         "On/Off": handlerPower,
-        "+/-": () => {},
+        "+/-": handleChangeSign,
     };
 
     function handlerOperation() {
@@ -47,6 +47,10 @@ export default function Button({ value, type }) {
 
     function handlerClear() {
         dispatch({ type: "CLEAR", payload: {} });
+    }
+
+    function handleChangeSign() {
+        dispatch({ type: "CHANGE_SIGN", payload: {} });
     }
 
     function handleActions() {
