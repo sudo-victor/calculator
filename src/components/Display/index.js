@@ -8,7 +8,7 @@ export default function Display() {
     const display = calculator.display;
     return (
         <Container>
-            <Input disabled value={display} />
+            <Input disabled value={display} on={calculator.on} />
         </Container>
     );
 }

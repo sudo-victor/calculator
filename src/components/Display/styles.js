@@ -10,9 +10,9 @@ export const Input = styled.input`
     width: 100%;
     padding: 10px;
     font-size: 18px;
-    text-align: end;
+    text-align: ${(props) => (props.on ? "end" : "center")};
     background: #fff;
-    color: #333;
+    color: ${(props) => (props.on ? "#333" : "#ccc")};
     border-radius: 5px;
     border: none;
     outline: none;
