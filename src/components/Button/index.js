@@ -36,7 +36,13 @@ export default function Button({ value, type }) {
             handleClearAll();
         } else if (value === "C") {
             handlerClear();
+        } else if (value === "On/Off") {
+            handlerPower();
         }
+    }
+
+    function handlerPower() {
+        dispatch({ type: "ON_OFF", payload: {} });
     }
 
     function handleClearAll() {
