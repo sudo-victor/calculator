@@ -13,10 +13,10 @@ export const Container = styled.footer`
 export const Author = styled.h3`
     font-size: 16px;
     font-weight: 300;
-    color: #333;
+    color: #f1f1f1;
 `;
 
 export const Link = styled.a`
     text-decoration: none;
-    color: #333;
+    color: #f1f1f1;
 `;

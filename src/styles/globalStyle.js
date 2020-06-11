@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        background: #f1f1f1;
+        background: #333;
     }
 `;
 

@@ -14,6 +14,7 @@ export const Input = styled.input`
     background: #fff;
     color: ${(props) => (props.on ? "#333" : "#ccc")};
     border-radius: 5px;
+    box-shadow: 0px 0px 10px #000;
     border: none;
     outline: none;
     cursor: default;
