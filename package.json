@@ -2,6 +2,7 @@
     "name": "calculator",
     "version": "0.1.0",
     "private": false,
+    "license": "MIT",
     "homepage": "https://sudo-victor.github.io/calculator/",
     "dependencies": {
         "@testing-library/jest-dom": "^4.2.4",
