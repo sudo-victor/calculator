@@ -130,7 +130,12 @@ export default function calculator(state = INITIAL_STATE, action) {
 
         case "CLEAR":
             if (state.on) {
-                let arrayDisplay = state.display.split("");
+                let arrayDisplay = String(state.display).split("");
+
+                // if the penultimate value is equal to one "." it will delete
+                if (arrayDisplay[arrayDisplay.length - 2] === ".") {
+                    arrayDisplay.pop();
+                }
                 arrayDisplay.pop();
                 newState = { ...state };
                 newState.display = arrayDisplay.join("");
