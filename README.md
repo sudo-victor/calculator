@@ -8,9 +8,9 @@ Calculator <br/>
 <h4 align="center">🔢 ReactJS Calculator</h4>
 </h3>
 
-<div align="center">
+<p align="center">
 <img src="./assets/calc.gif" alt="demo-web" height="425">
-</div>
+</p>
 
 ## Features
 
