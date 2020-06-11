@@ -12,7 +12,7 @@ Calculator <br/>
 
 -   ⚛ReactJS - A lib to create user interfaces on web pages.
 -   🔄Redux - A lib to manage the state of the app.
--   💅🏿Styled Components - One of the new ways to use CSS in modern JavaScript
+-   💅🏿Styled Components - One of the new ways to use CSS in modern JavaScript.
 
 ## Getting Started
 
