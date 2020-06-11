@@ -2,6 +2,7 @@ const INITIAL_STATE = {
     display: "",
     currentValue: "",
     operator: "",
+    calculated: false,
 };
 let newState;
 const operations = {
@@ -37,10 +38,9 @@ function validateDisplay(value) {
         const arrayValue = value.split("");
         const filteredValue = arrayValue.filter((value, index) => index < 8);
         const newValue = filteredValue.join("");
-        console.log(newValue);
-        return newValue;
+        return String(newValue);
     }
-    return value;
+    return String(value);
 }
 
 export default function calculator(state = INITIAL_STATE, action) {
@@ -53,19 +53,33 @@ export default function calculator(state = INITIAL_STATE, action) {
                 return newState;
             }
 
+            if (state.operator === "=") {
+                newState.operator = action.payload.operator;
+                return newState;
+            }
+
             if (state.display === "") {
                 newState.display = state.currentValue;
             } else {
                 const { display, currentValue, operator } = newState;
-                const response = String(
-                    calculate(operator, currentValue, display)
-                );
+                const response = calculate(operator, currentValue, display);
+
                 newState.display = validateDisplay(response);
+            }
+
+            if (action.payload.operator) {
+                newState.calculated = true;
+                newState.operator = action.payload.operator;
             }
             return newState;
 
         case "ADD_NUMBER":
             newState = { ...state };
+            if (newState.calculated) {
+                newState.currentValue = newState.display;
+                newState.calculated = false;
+                newState.display = "";
+            }
             newState.display = validateDisplay(
                 newState.display + action.payload
             );
@@ -89,6 +103,7 @@ export default function calculator(state = INITIAL_STATE, action) {
             newState.display = "";
             newState.currentValue = "";
             newState.operator = "";
+            newState.calculated = false;
             return newState;
 
         case "CLEAR":

@@ -1,10 +1,11 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Container } from "./styles";
 
 export default function Button({ value, type }) {
     const dispatch = useDispatch();
+    const calculator = useSelector((state) => state.calculatorReducer);
     const possibleClicks = {
         operator: handlerOperation,
         number: handlerAddNumber,
@@ -12,6 +13,13 @@ export default function Button({ value, type }) {
     };
 
     function handlerOperation() {
+        const { operator, display, currentValue } = calculator;
+
+        if (operator && display && currentValue) {
+            dispatch({ type: "CALCULATE", payload: { operator: value } });
+            return;
+        }
+
         if (value === "=") {
             dispatch({ type: "CALCULATE", payload: {} });
             return;
@@ -39,9 +47,9 @@ export default function Button({ value, type }) {
         dispatch({ type: "CLEAR", payload: {} });
     }
 
-    function handlePress() {
+    function handleClick() {
         possibleClicks[type]();
     }
 
-    return <Container onClick={handlePress}>{value}</Container>;
+    return <Container onClick={handleClick}>{value}</Container>;
 }
