@@ -110,7 +110,7 @@ export default function calculator(state = INITIAL_STATE, action) {
                 if (newState.display === "") {
                     newState.operator = "";
                 }
-                newState.display = "";
+                newState.calculated = true;
                 return newState;
             }
 
