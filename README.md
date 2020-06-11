@@ -8,6 +8,10 @@ Calculator <br/>
 <h4 align="center">🔢 ReactJS Calculator</h4>
 </h3>
 
+<div>
+<img src="./assets/calc.gif" alt="demo-web" height="425">
+</div>
+
 ## Features
 
 -   ⚛ReactJS - A lib to create user interfaces on web pages.
@@ -22,7 +26,3 @@ cd calculator
 yarn
 yarn start
 ```
-
-## View
-
-[View App](https://expo.io/@victor_souto/checklist)
