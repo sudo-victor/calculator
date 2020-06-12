@@ -7,18 +7,18 @@ export default function Button({ value, type }) {
     const dispatch = useDispatch();
     const calculator = useSelector((state) => state.calculatorReducer);
     const possibleClicks = {
-        operator: handlerOperation,
-        number: handlerAddNumber,
+        operator: handleOperation,
+        number: handleAddNumber,
         action: handleActions,
     };
     const actions = {
         AC: handleClearAll,
-        C: handlerClear,
-        "On/Off": handlerPower,
+        C: handleClear,
+        "On/Off": handlePower,
         "+/-": handleChangeSign,
     };
 
-    function handlerOperation() {
+    function handleOperation() {
         const { operator, display, currentValue } = calculator;
 
         if (operator && display && currentValue) {
@@ -33,11 +33,11 @@ export default function Button({ value, type }) {
         dispatch({ type: "DATA_STORAGE", payload: value });
     }
 
-    function handlerAddNumber() {
+    function handleAddNumber() {
         dispatch({ type: "ADD_NUMBER", payload: value });
     }
 
-    function handlerPower() {
+    function handlePower() {
         dispatch({ type: "ON_OFF", payload: {} });
     }
 
@@ -45,7 +45,7 @@ export default function Button({ value, type }) {
         dispatch({ type: "CLEAR_ALL", payload: {} });
     }
 
-    function handlerClear() {
+    function handleClear() {
         dispatch({ type: "CLEAR", payload: {} });
     }
 
