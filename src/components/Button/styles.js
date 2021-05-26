@@ -8,9 +8,10 @@ export const Container = styled.button`
     align-items: center;
     justify-content: center;
     border-radius: 5px;
-    background: #fff;
-    color: #333;
-    font-size: 16px;
+    background: #191622;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
     box-shadow: 0px 0px 10px #000;
     outline: none;
     border: none;
